@@ -46,24 +46,25 @@
                         <span class="flex text-gray-900">
                             {{ $service->name }}
                         </span>
-                        <span class="flex text-xs">
-                            {{ $service->contact }}
-                            </span>
+                        <span class="flex text-sm">
+                            <a href="tel:+33{{ str_replace([' ', '+33', '(0)'], '', preg_replace('/^0/', '', $service->contact)) }}">
+                                {{ $service->contact }}
+                            </a>
+                        </span>
                         {{-- <span class="flex text-xs"> --}}
                             {{-- patients {{ $service->gravite }} --}}
                             {{-- </span> --}}
                         </dt>
                         <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
                         <div class="flex-shrink-0">
-                            <span class="mt-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium leading-4 bg-green-100 text-green-800">
-                                {{ $service->place_disponible }} disponibles
+                            <span class="mt-2 mr-1 inline-flex items-center px-2 py-1 rounded-full text-sm font-semibold leading-4 bg-green-100 text-green-800">
+                                {{ $service->place_disponible }} {{Str::plural('disponible', $service->place_disponible)}}
                             </span>
-
-                            <span class="mt-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium leading-4 bg-orange-100 text-orange-800">
+                            <span class="mt-2 mr-1 inline-flex items-center px-2 py-1 rounded-full text-sm font-semibold leading-4 bg-orange-100 text-orange-800">
                                 {{ $service->place_bientot_disponible }} prochainement
                             </span>
-                            <span class="mt-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium leading-4 bg-indigo-100 text-indigo-800">
-                                {{ $service->place_totales }} totales
+                            <span class="mt-2 mr-1 inline-flex items-center px-2 py-1 rounded-full text-sm font-semibold leading-4 bg-indigo-100 text-indigo-800">
+                                {{ $service->place_totales }} au total
                             </span>
                         </div>
                         <div class="mt-2 flex items-center text-xs leading-5 text-gray-500 sm:mt-2">
